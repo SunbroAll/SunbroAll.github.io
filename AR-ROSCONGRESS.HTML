@@ -9,7 +9,7 @@
             margin: 0;
             overflow: hidden;
         }
-        .center-button {
+        .center-button, .video-modal {
             display: none;
             justify-content: center;
             align-items: center;
@@ -29,11 +29,25 @@
             text-decoration: none;
             border-radius: 5px;
         }
+        .video-modal {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        video {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
     </style>
 </head>
 <body>
     <div class="center-button" id="center-button">
-        <a href="https://github.com" target="_blank" class="github-link">Visit GitHub</a>
+        <button class="github-link" id="open-video-modal">Watch Video</button>
+    </div>
+    <div class="video-modal" id="video-modal">
+        <video id="video-player" controls>
+            <source src="https://sunbroall.github.io/VideoClip.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
     <a-scene embedded arjs>
         <a-marker preset="hiro" id="marker">
@@ -51,6 +65,9 @@
     <script>
         var marker = document.getElementById("marker");
         var centerButton = document.getElementById("center-button");
+        var openVideoModalBtn = document.getElementById("open-video-modal");
+        var videoModal = document.getElementById("video-modal");
+        var videoPlayer = document.getElementById("video-player");
 
         marker.addEventListener("markerFound", function () {
             centerButton.style.display = "flex";
@@ -58,6 +75,16 @@
 
         marker.addEventListener("markerLost", function () {
             centerButton.style.display = "none";
+        });
+
+        openVideoModalBtn.addEventListener("click", function () {
+            videoModal.style.display = "flex";
+            videoPlayer.play();
+        });
+
+        videoModal.addEventListener("click", function () {
+            videoModal.style.display = "none";
+            videoPlayer.pause();
         });
     </script>
 </body>

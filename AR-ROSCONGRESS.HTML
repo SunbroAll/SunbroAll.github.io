@@ -32,21 +32,26 @@
     </style>
 </head>
 <body>
-    <a-scene embedded arjs>
+        <a-scene embedded arjs>
         <a-marker preset="hiro">
             <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
             <a-entity
-                position="0 0 0"
-                scale="2 2 2"
-                rotation="0 90 0"
-                gltf-model="https://SunbroAll.github.io/gltf_logo/scene.gltf"
+            id="model"
+            position="0 0 0"
+            scale="2 2 2"
+            rotation="90 0 0"
+            gltf-model="https://SunbroAll.github.io/gltf_logo/scene.gltf"
             ></a-entity>
         </a-marker>
         <a-entity camera></a-entity>
-    </a-scene>
+        </a-scene>
 
-    <div class="center-button">
-        <a href="https://github.com" target="_blank" class="github-link">Visit GitHub</a>
-    </div>
-</body>
+        <script>
+            var model = document.getElementById("model");
+
+            model.addEventListener("click", function () {
+                model.setAttribute("visible", false);
+            });
+        </script>
+    </body>
 </html>

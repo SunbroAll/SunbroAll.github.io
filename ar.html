@@ -1,89 +1,19 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
     <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 100%;
-            max-width: 640px;
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 25px;
-            color: #f1f1f1;
-            font-size: 35px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body style="margin: 0px; overflow: hidden;">
-    <a-scene embedded arjs>
+    <body style="margin : 0px; overflow: hidden;">
+        <a-scene embedded arjs>
         <a-marker preset="hiro">
+            <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
             <a-entity
-                id="model"
-                position="0 0 0"
-                scale="9 9 9"
-                gltf-model="https://github.com/SunbroAll/SunbroAll.github.io/blob/master/gltf_logo/scene.gltf"
+            position="0 0 0"
+            scale="2 2 2"
+            gltf-model="https://github.com/SunbroAll/SunbroAll.github.io/blob/master/gltf_logo/scene.gltf"
             ></a-entity>
         </a-marker>
         <a-entity camera></a-entity>
-    </a-scene>
-
-    <div id="myModal" class="modal">
-        <span class="close">&times;</span>
-        <video id="video" class="modal-content" controls>
-            <source src="https://SunbroAll.github.io/japaneses.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <script>
-        var model = document.getElementById("model");
-        var modal = document.getElementById("myModal");
-        var video = document.getElementById("video");
-        var span = document.getElementsByClassName("close")[0];
-
-        model.addEventListener("click", function () {
-            modal.style.display = "block";
-            video.play();
-        });
-
-        span.onclick = function () {
-            modal.style.display = "none";
-            video.pause();
-        };
-
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                video.pause();
-            }
-        };
-    </script>
-</body>
+        </a-scene>
+    </body>
 </html>

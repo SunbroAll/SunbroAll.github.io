@@ -1,34 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2299.3">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-  </style>
-</head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://aframe.io/releases/1.0.0/aframe.min.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- we import arjs version without NFT but with marker + location based support --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;body style="margin : 0px; overflow: hidden;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a-scene embedded arjs&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a-marker preset="hiro"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a-entity</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position="0 0 0"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>scale="0.05 0.05 0.05"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gltf-model="your-server/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&gt;&lt;/a-entity&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/a-marker&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a-entity camera&gt;&lt;/a-entity&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/a-scene&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
-</body>
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <body style="margin : 0px; overflow: hidden;">
+        <a-scene embedded arjs>
+        <a-marker preset="hiro">
+            <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+            <a-image
+  src="https://sunbroall.github.io/sibir.png"
+  scale="5 5 1"
+  position="150 300 -100"
+>
+</a-image>
+
+        </a-marker>
+        <a-entity camera></a-entity>
+        </a-scene>
+    </body>
 </html>

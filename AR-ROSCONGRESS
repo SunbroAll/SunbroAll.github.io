@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <!-- we import arjs version without NFT but with marker + location based support -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <body style="margin : 0px; overflow: hidden;">
+        <a-scene embedded arjs>
+            <a-marker preset="hiro">
+                <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+                <a-entity
+                id="model"
+                position="0 0 0"
+                scale="1 1 1"
+                rotation="90 0 0"
+                gltf-model="https://SunbroAll.github.io/gltf_logo/scene.gltf"
+                ></a-entity>
+            </a-marker>
+            <a-entity camera>
+                <a-entity
+                    cursor="rayOrigin: mouse"
+                    raycaster="objects: .clickable"
+                ></a-entity>
+            </a-entity>
+        </a-scene>
+
+        <script>
+            var model = document.getElementById("model");
+
+            model.classList.add("clickable");
+
+            model.addEventListener("click", function () {
+                model.setAttribute("visible", false);
+            });
+        </script>
+    </body>
+</html>

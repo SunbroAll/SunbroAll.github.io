@@ -7,13 +7,11 @@
         <a-scene embedded arjs>
         <a-marker preset="hiro">
             <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
-            <a-image
-  src="https://sunbroall.github.io/sibir.png"
-  scale="5 5 1"
-  position="1 1 1"
->
-</a-image>
-
+            <a-entity
+            position="0 0 0"
+            scale="0.05 0.05 0.05"
+            gltf-model="https://sunbroall.github.io/gltf_logo/scene.gltf"
+            ></a-entity>
         </a-marker>
         <a-entity camera></a-entity>
         </a-scene>

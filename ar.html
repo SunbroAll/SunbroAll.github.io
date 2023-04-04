@@ -8,6 +8,7 @@
         <a-marker preset="hiro">
             <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
             <a-entity
+            id="model"
             position="0 0 0"
             scale="2 2 2"
             gltf-model="https://SunbroAll.github.io/gltf_logo/scene.gltf"
@@ -15,5 +16,13 @@
         </a-marker>
         <a-entity camera></a-entity>
         </a-scene>
+
+        <script>
+            var model = document.getElementById("model");
+
+            model.addEventListener("click", function () {
+                model.setAttribute("visible", false);
+            });
+        </script>
     </body>
 </html>

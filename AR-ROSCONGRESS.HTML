@@ -32,6 +32,9 @@
     </style>
 </head>
 <body>
+    <div class="center-button" id="center-button">
+        <a href="https://github.com" target="_blank" class="github-link">Visit GitHub</a>
+    </div>
     <a-scene embedded arjs>
         <a-marker preset="hiro" id="marker">
             <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
@@ -44,10 +47,6 @@
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
-
-    <div class="center-button" id="center-button">
-        <a href="https://github.com" target="_blank" class="github-link">Visit GitHub</a>
-    </div>
 
     <script>
         var marker = document.getElementById("marker");

@@ -1,0 +1,11 @@
+Model Information:
+* title:	glTF Logo
+* source:	https://sketchfab.com/3d-models/gltf-logo-13c40e18bf674bfeb97618d97013acc4
+* author:	khronosgroup (https://sketchfab.com/khronosgroup)
+
+Model License:
+* license type:	CC-BY-ND-4.0 (http://creativecommons.org/licenses/by-nd/4.0/)
+* requirements:	Author must be credited. Modified versions can not be distributed. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "glTF Logo" (https://sketchfab.com/3d-models/gltf-logo-13c40e18bf674bfeb97618d97013acc4) by khronosgroup (https://sketchfab.com/khronosgroup) licensed under CC-BY-ND-4.0 (http://creativecommons.org/licenses/by-nd/4.0/)

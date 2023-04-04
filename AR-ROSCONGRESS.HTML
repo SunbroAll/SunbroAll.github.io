@@ -10,7 +10,7 @@
             overflow: hidden;
         }
         .center-button {
-            display: flex;
+            display: none;
             justify-content: center;
             align-items: center;
             position: absolute;
@@ -32,26 +32,34 @@
     </style>
 </head>
 <body>
-        <a-scene embedded arjs>
-        <a-marker preset="hiro">
+    <a-scene embedded arjs>
+        <a-marker preset="hiro" id="marker">
             <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
             <a-entity
-            id="model"
-            position="0 0 0"
-            scale="2 2 2"
-            rotation="90 0 0"
-            gltf-model="https://SunbroAll.github.io/gltf_logo/scene.gltf"
+                position="0 0 0"
+                scale="2 2 2"
+                rotation="0 90 0"
+                gltf-model="https://SunbroAll.github.io/gltf_logo/scene.gltf"
             ></a-entity>
         </a-marker>
         <a-entity camera></a-entity>
-        </a-scene>
+    </a-scene>
 
-        <script>
-            var model = document.getElementById("model");
+    <div class="center-button" id="center-button">
+        <a href="https://github.com" target="_blank" class="github-link">Visit GitHub</a>
+    </div>
 
-            model.addEventListener("click", function () {
-                model.setAttribute("visible", false);
-            });
-        </script>
-    </body>
+    <script>
+        var marker = document.getElementById("marker");
+        var centerButton = document.getElementById("center-button");
+
+        marker.addEventListener("markerFound", function () {
+            centerButton.style.display = "flex";
+        });
+
+        marker.addEventListener("markerLost", function () {
+            centerButton.style.display = "none";
+        });
+    </script>
+</body>
 </html>

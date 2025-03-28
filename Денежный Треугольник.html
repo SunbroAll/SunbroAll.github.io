@@ -696,44 +696,73 @@
         </div>
     </footer>
     
-    <script>
-        // Простая анимация для плавного появления элементов
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.number-card');
-            
-            function isInViewport(element) {
-                const rect = element.getBoundingClientRect();
-                return (
-                    rect.top >= 0 &&
-                    rect.left >= 0 &&
-                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                );
-            }
-            
-            function checkCards() {
-                cards.forEach(card => {
-                    if (isInViewport(card)) {
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 100);
-                    }
-                });
-            }
-            
-            // Инициализация стилей для анимации
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            });
-            
-            // Проверка видимости при загрузке и скролле
-            window.addEventListener('scroll', checkCards);
-            checkCards(); // Проверка при загрузке
+<script>
+// Улучшенная анимация для плавного появления элементов
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.number-card');
+    
+    // Сразу отображаем все карточки при загрузке без анимации, если экран маленький
+    if (window.innerWidth <= 768) {
+        cards.forEach(card => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
         });
-    </script>
+        return; // Выходим из функции, если экран маленький
+    }
+    
+    // Улучшенная функция проверки видимости
+    function isPartiallyInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        
+        // Элемент считается видимым, если хотя бы 25% его высоты находится в области видимости
+        return (
+            rect.top <= windowHeight && 
+            rect.top + (rect.height * 0.25) >= 0
+        );
+    }
+    
+    // Показываем карточки с задержкой
+    function animateCards() {
+        cards.forEach((card, index) => {
+            if (isPartiallyInViewport(card) && card.style.opacity !== '1') {
+                // Добавляем небольшую задержку для каждой карточки
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 50); // Задержка увеличивается с каждой карточкой
+            }
+        });
+    }
+    
+    // Инициализация стилей для анимации
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.4s ease';
+    });
+    
+    // Проверка видимости при загрузке и скролле
+    window.addEventListener('scroll', animateCards);
+    
+    // Проверка при загрузке и после короткой задержки
+    animateCards();
+    
+    // Дополнительная проверка через 300мс и 600мс для надежности
+    setTimeout(animateCards, 300);
+    setTimeout(animateCards, 600);
+    
+    // Резервный вариант: если карточки все еще не видны через 1.5 секунды, показываем все
+    setTimeout(() => {
+        cards.forEach(card => {
+            if (card.style.opacity !== '1') {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }
+        });
+    }, 1500);
+});
+</script>
 </body>
 </html>
                 </div>

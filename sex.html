@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Какой секс любит твой партнёр</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+        
+        :root {
+            --primary: #ff375f;
+            --secondary: #ff9db9;
+            --accent: #ff5d8f;
+            --light-accent: #ffd0df;
+            --text: #333333;
+            --text-secondary: #555555;
+            --bg-light: #fff5f8;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --border: rgba(255, 55, 95, 0.2);
+            --love-light: #ffb6c1;
+            --love-medium: #ff69b4;
+            --love-dark: #ff1493;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            line-height: 1.5;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, var(--love-light), var(--love-medium), var(--love-dark));
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M45,10 C30,10 25,20 25,30 C25,40 30,50 50,50 C70,50 75,40 75,30 C75,20 70,10 55,10 C55,10 45,10 45,10 Z' fill='%23ffffff' fill-opacity='0.05' transform='rotate(45 50 50)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 4rem 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            background: linear-gradient(120deg, var(--love-dark), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 4rem 0 2rem 0;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 1rem 0;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .header-desc {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .logo-image {
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+            transition: transform 0.5s ease;
+            max-width: 450px;
+            margin: 0 auto 30px auto;
+            display: block;
+        }
+        
+        .logo-image:hover {
+            transform: translateY(-10px);
+        }
+        
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+        
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+        }
+        
+        .calculator {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 60px;
+            border-radius: 24px;
+            margin: 80px auto;
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.1);
+        }
+        
+        .calculator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 93, 143, 0.1), transparent 70%);
+            z-index: -1;
+        }
+        
+        .calculator h3 {
+            margin-top: 0;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .example {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .number-card {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        
+        .number-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 93, 143, 0.3);
+            border-color: rgba(255, 93, 143, 0.4);
+        }
+        
+        .number-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, rgba(255, 93, 143, 0.5), transparent);
+        }
+        
+        .number-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background-color: var(--light-accent);
+            border-radius: 50%;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+        }
+        
+        .card-1 .number-icon { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 85, 95, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.7); }
+        .card-2 .number-icon { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 120, 150, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.7); }
+        .card-3 .number-icon { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 150, 180, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.7); }
+        .card-4 .number-icon { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 180, 210, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.7); }
+        .card-5 .number-icon { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 0 30px rgba(253, 121, 168, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.7); }
+        .card-6 .number-icon { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 100, 130, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.7); }
+        .card-7 .number-icon { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 130, 160, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.7); }
+        .card-8 .number-icon { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 160, 190, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.7); }
+        .card-9 .number-icon { box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 0 30px rgba(255, 190, 220, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.7); }
+        
+        .number-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .number-title h3 {
+            margin: 0;
+        }
+        
+        .number-title span {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-right: 12px;
+            opacity: 0.8;
+        }
+        
+        .highlight {
+            background-color: rgba(255, 93, 143, 0.1);
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-weight: 500;
+            color: var(--text);
+            border-left: 3px solid var(--primary);
+        }
+        
+        .emphasis {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2em;
+            margin: 15px 0;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+        
+        footer {
+            padding: 80px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.7);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .accent-text {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .telegram-link {
+            color: #0088cc;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .telegram-link:hover {
+            opacity: 0.8;
+        }
+        
+        .telegram-icon {
+            margin-right: 8px;
+        }
+        
+        .contact-block {
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 24px;
+            text-align: center;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .heart {
+            position: absolute;
+            opacity: 0.4;
+            filter: blur(5px);
+        }
+        
+        .heart-1 {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 15%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff69b4'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") no-repeat center/contain;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .heart-2 {
+            width: 90px;
+            height: 90px;
+            top: 60%;
+            right: 20%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff1493'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") no-repeat center/contain;
+            animation: float 20s infinite alternate-reverse ease-in-out;
+        }
+        
+        .heart-3 {
+            width: 70px;
+            height: 70px;
+            bottom: 10%;
+            left: 30%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffb6c1'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") no-repeat center/contain;
+            animation: float 18s infinite alternate ease-in-out;
+        }
+        
+        .heart-cloud {
+            position: absolute;
+            width: 250px;
+            height: 150px;
+            top: 40%;
+            right: 5%;
+            opacity: 0.2;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='150' viewBox='0 0 250 150'%3E%3Cg fill='%23ff69b4'%3E%3Cpath d='M25,100 Q50,20 75,100 L75,100 Q100,20 125,100 L125,100 Q150,20 175,100 L175,100 Q200,20 225,100 L25,100 Z'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;
+            animation: float 30s infinite alternate ease-in-out;
+        }
+        
+        .heart-cloud-2 {
+            position: absolute;
+            width: 200px;
+            height: 120px;
+            top: 15%;
+            left: 10%;
+            opacity: 0.2;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='120' viewBox='0 0 200 120'%3E%3Cg fill='%23ffb6c1'%3E%3Cpath d='M20,80 Q40,16 60,80 L60,80 Q80,16 100,80 L100,80 Q120,16 140,80 L140,80 Q160,16 180,80 L20,80 Z'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;
+            animation: float 25s infinite alternate-reverse ease-in-out;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(20px, 20px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            z-index: 5;
+            color: white;
+            opacity: 0.7;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+        
+        .emoji {
+            font-size: 1.5em;
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .number-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                padding: 30px;
+            }
+            
+            .calculator {
+                padding: 30px;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .number-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts">
+        <div class="heart heart-1"></div>
+        <div class="heart heart-2"></div>
+        <div class="heart heart-3"></div>
+        <div class="heart-cloud"></div>
+        <div class="heart-cloud-2"></div>
+    </div>
+    
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <!-- Место для вашего логотипа -->
+                <img src="https://i.ibb.co/RpYpPhyy/background-removed-image-zt-JHQ-w-NQ3urotrvmo-G9-CA.png" alt="Какой секс любит твой партнёр" class="logo-image">
+                
+                <h1>Какой секс любит твой партнёр?</h1>
+                <p class="header-desc">Разгадай его тайные желания и предпочтения с помощью числа его рождения ✨</p>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator" onclick="document.querySelector('.section').scrollIntoView({behavior: 'smooth'})">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </header>
+    
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-intro">
+                    <h2>Узнай его предпочтения ❤️</h2>
+                    <p>Каждый человек уникален, и его сексуальные предпочтения могут многое рассказать о его характере. Узнай, что нравится твоему партнеру в постели, исходя из дня его рождения.</p>
+                </div>
+                
+                <div class="calculator">
+                    <h3>Как рассчитать число сексуальной энергии 🔢</h3>
+                    <p>Сложи цифры дня рождения своего партнера до однозначного числа и открой его сексуальную природу.</p>
+                    <div class="example">
+                        <h3>Пример ✨</h3>
+                        <p>Если твой партнер родился 26 числа:</p>
+                        <p>2 + 6 = 8</p>
+                        <p><strong>Его сексуальное число — 8 ⚖️</strong></p>
+                    </div>
+                    <p class="accent-text">А какое число у твоего партнера? 💋</p>
+                </div>
+                
+                <div class="number-grid">
+                    <article class="number-card card-1">
+                        <div class="number-icon">🔥</div>
+                        <div class="number-title">
+                            <span>01</span>
+                            <h3>Число 1</h3>
+                        </div>
+                        <p>Девочки, берегитесь! Эти парни горячи и привлекательны.</p>
+                        <p class="emphasis">Номер 1 - их девиз по жизни</p>
+                        <p>Они привыкли быть первыми везде, особенно в сексе. Активные и харизматичные, они не оставляют своей половинке никаких шансов устоять.</p>
+                        <div class="highlight">Однако, если потерять бдительность, такие мужчины могут забыть об удовольствии женщины.</div>
+                        <p><strong>Совет!</strong></p>
+                        <p>Напомни партнёру, что в сексе лидерство это не всегда про собственное наслаждение. Проявляй инициативу сама, и тогда вы оба получите удовольствие.</p>
+                    </article>
+                    
+                    <article class="number-card card-2">
+                        <div class="number-icon">❤️</div>
+                        <div class="number-title">
+                            <span>02</span>
+                            <h3>Число 2</h3>
+                        </div>
+                        <p>«Двойки» - это настоящие романтики с большой дороги. Перед человеком обнажают не только тело, но и душу.</p>
+                        <p>И в постели они раскрываются только тогда, когда чувствуют своего человека.</p>
+                        <p class="emphasis">Секс без любви не приносит им удовольствия</p>
+                        <p>Но если намерения такого мужчины серьёзны, то он очень внимателен к желаниям и потребностям своего партнера.</p>
+                        <div class="highlight"><strong>Coвет!</strong> Подстраиваться под любимого человека - это хорошо, но думаю, тебе и самой понравится, когда он в процессе подумает о себе. Поговори с ним об этом.</div>
+                    </article>
+                    
+                    <article class="number-card card-3">
+                        <div class="number-icon">🎭</div>
+                        <div class="number-title">
+                            <span>03</span>
+                            <h3>Число 3</h3>
+                        </div>
+                        <p class="emphasis">Эти парни с сюрпризом</p>
+                        <p>Им нравятся эксперименты: ролевые игры, секс-игрушки и нестандартные позы --- все это их дико возбуждает.</p>
+                        <p>А ещё эти мужчины чутки на ощущения и даже самые острые, так что не прочь сделать это в общественном месте.</p>
+                        <div class="highlight"><strong>Совет!</strong> Если он любитель сложных экспериментов, попробуй входить в его игру постепенно, начиная с более простых активностей, и со временем повышать планку.</div>
+                    </article>
+                    
+                    <article class="number-card card-4">
+                        <div class="number-icon">📘</div>
+                        <div class="number-title">
+                            <span>04</span>
+                            <h3>Число 4</h3>
+                        </div>
+                        <p>На контрасте с «тройками» парни-«четверки» очень консервативны — им эксперименты не подходят, зато они с радостью доставят удовольствие своему партнеру.</p>
+                        <p class="emphasis">Консервативны</p>
+                        <div class="highlight"><strong>Coвет!</strong> Чтобы он раскрылся в постели, помоги ему расслабиться. А если тебе приелась его консервативность, попробуй постепенно уговорить его к экспериментам - сначала деликатными разговорами, а потом действиями.</div>
+                    </article>
+                    
+                    <article class="number-card card-5">
+                        <div class="number-icon">🔮</div>
+                        <div class="number-title">
+                            <span>05</span>
+                            <h3>Число 5</h3>
+                        </div>
+                        <p>Если твой мужчина 5 - «пятерка», то тебе повезло. Эти парни просто обожают секс и очень активно себя проявляют в нем.</p>
+                        <p class="emphasis">Эксперименты с местами, позами, ролями — это все для них</p>
+                        <p>На заметочку!</p>
+                        <div class="highlight">Но есть нюанс: если в постели нет разнообразия, эти Дон Жуаны не будут верны своей любимой.</div>
+                       <p>Однако, если ты тоже любишь новые впечатления, то вы точно найдёте общий язык — и не только.</p>
+                        <p><strong>Совет!</strong> Если он поймёт, что секс ради секса хорош, когда у вас впереди ещё вся жизнь, то, вероятно, перестанет искать кого-то на стороне. Тогда подумай над тем, чтобы добавить пикантности в ваши отношения, ищите новые ощущения друг с другом.</p>
+                    </article>
+                    
+                    <article class="number-card card-6">
+                        <div class="number-icon">💋</div>
+                        <div class="number-title">
+                            <span>06</span>
+                            <h3>Число 6</h3>
+                        </div>
+                        <p>«Шестёрки» - довольно сложные натуры. У них от природы яркий магнетизм, от них буквально веет сексуальностью.</p>
+                        <p class="emphasis">Веет сексуальностью</p>
+                        <p>Но даже в постели эти мужчины очень требовательны к себе, а потому часто не могут раскрыть себя полностью.</p>
+                        <p>Но ценить хороший секс они умеют, и если партнёрша уступает им, запросто могут сменить пассию. Опасаться стоит не только этого.</p>
+                        <p>В серьёзных отношениях это серые кардиналы: если такому человеку что-то не нравится, он под любым предлогом выйдет из отношений.</p>
+                        <div class="highlight">А ты так и не узнаешь из-за чего.</div>
+                        <p><strong>Coвет!</strong> Полюби своё тело и не стесняйся его. Отбросьте друг от друга все секреты, только вы и он.</p>
+                    </article>
+                    
+                    <article class="number-card card-7">
+                        <div class="number-icon">🧠</div>
+                        <div class="number-title">
+                            <span>07</span>
+                            <h3>Число 7</h3>
+                        </div>
+                        <p>«Семёрок» затащить в постель может лишь высокий интеллектуальный уровень партнерши.</p>
+                        <p class="emphasis">Нет, они отнюдь не ботаники</p>
+                        <p>Просто подтянутое тело и красивое нижнее белье их волнуют в меньшей степени.</p>
+                        <p>Секс для таких мужчин лишь приятное дополнение, но не обязательное условие хороших отношений.</p>
+                        <div class="highlight"><strong>Coвет!</strong> Если твоего мужчину возбуждают разговоры, не факт, что тебе этого будет достаточно. Начни с эксперимента — и пусть он включается в игру.</div>
+                    </article>
+                    
+                    <article class="number-card card-8">
+                        <div class="number-icon">⚖️</div>
+                        <div class="number-title">
+                            <span>08</span>
+                            <h3>Число 8</h3>
+                        </div>
+                        <p>Эти мужчины могут задать жару, правда, им важно, чтобы секс не отвлекал их от работы, потому что они буквально зациклены на работе.</p>
+                        <p class="emphasis">Встречаться такие любят с сильными и неординарными личностями</p>
+                        <p>Еще один секрет: во время секса «восьмёрки» запросто могут думать о чём-то постороннем - космосе, религии, рабочих вопросах.</p>
+                        <p>Выключить голову им бывает крайне сложно.</p>
+                        <div class="highlight"><strong>Coвет!</strong> Помоги ему выключить голову во время близости, и приятный вечер вам обоим обеспечен.</div>
+                    </article>
+                    
+                    <article class="number-card card-9">
+                        <div class="number-icon">✨</div>
+                        <div class="number-title">
+                            <span>09</span>
+                            <h3>Число 9</h3>
+                        </div>
+                        <p>Для «девяток» дьявол кроется в мелочах. Они ценят в сексе каждую деталь - парфюм, гладкую кожу, романтическую атмосферу, красивое белье, расслабляющий массаж.</p>
+                        <p class="emphasis">Чем больше таких деталей - тем лучше</p>
+                        <p>Они любят красоту и продуманность. Возможно, поэтому таким мужчинам чужда спонтанность. Фойе, лифт, общественное место - это не про них.</p>
+                        <p>Для «девяток» сексуальность — это романтика. Так что чем сильнее близость, тем качественнее секс.</p>
+                        <div class="highlight"><strong>Совет!</strong> Идеальные условия — это классно, но может, стоит предложить ему вернуться из кино в реальную жизнь?</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="contact-block">
+                <h3>Узнай полную совместимость с партнером! 💕</h3>
+                <p>Полную характеристику партнера и совместимость я даю на своих консультациях по сфере отношений!</p>
+                <p>Ведь характер и темперамент человека состоит не только из дня рождения, а из всей его даты рождения!</p>
+                <p>И в треугольнике отношений есть 6 энергий, которые полностью раскрывают характер и темперамент партнера!</p>
+                <p>Если ты хочешь узнать больше о себе, понять как пробить финансовый потолок, у меня есть бесплатная 20-минутная консультация для тебя.</p>
+                <p>На консультации мы разберем твою личность, предназначение и расскажу, что приготовил для тебя этот год!</p>
+                <p style="font-weight: 600; margin: 20px 0; color: var(--accent);">Пиши кодовое слово «Звезда» в Директ и мы подберем удобную дату и время для тебя 🫶🏼</p>
+                
+                <!-- Телеграм-ссылка внутри контактного блока -->
+                <div style="margin-top: 30px;">
+                    <a href="https://t.me/kutskate" class="telegram-link" target="_blank" style="font-size: 1.5rem; font-weight: 600; display: flex; align-items: center; justify-content: center;">
+                        <svg class="telegram-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;">
+                            <path d="M22.0717 3.05291C21.7567 2.78291 21.2707 2.76291 20.5717 2.99291L2.57165 9.99291C1.77165 10.2629 1.30165 10.6429 1.16165 11.1229C0.980651 11.7629 1.57165 12.1629 1.57165 12.1629L5.57165 13.6629L7.57165 20.6629C7.78165 21.3829 8.16165 21.6629 8.57165 21.6629C8.91165 21.6629 9.27165 21.4629 9.63165 21.1029L12.0717 18.6629L16.0717 21.6629C16.2517 21.7829 16.4317 21.8629 16.6017 21.9129C16.7717 21.9629 16.9317 21.9829 17.0717 21.9829C17.3017 21.9829 17.5217 21.9229 17.7217 21.8029C17.9217 21.6829 18.0917 21.5029 18.2317 21.2829L22.2317 4.28291C22.4117 3.82291 22.3317 3.28291 22.0717 3.05291Z" fill="#0088cc"/>
+                        </svg>
+                        @kutskate
+                    </a>
+                </div>
+            </div>
+            <p class="footer-text">Раскрой тайны ваших отношений через числа и найди свой путь к счастью и гармонии ✨</p>
+            <p class="footer-text">© 2025 Сексуальный Гороскоп</p>
+            <p class="footer-text" style="margin-top: 20px; font-style: italic; font-weight: 500; font-size: 1rem; color: var(--text);">Екатерина Куц - твой цифровой психолог 🫶🏼</p>
+        </div>
+    </footer>
+    
+<script>
+// Улучшенная анимация для плавного появления элементов
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.number-card');
+    
+    // Сразу отображаем все карточки при загрузке без анимации, если экран маленький
+    if (window.innerWidth <= 768) {
+        cards.forEach(card => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        });
+        return; // Выходим из функции, если экран маленький
+    }
+    
+    // Улучшенная функция проверки видимости
+    function isPartiallyInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        
+        // Элемент считается видимым, если хотя бы 25% его высоты находится в области видимости
+        return (
+            rect.top <= windowHeight && 
+            rect.top + (rect.height * 0.25) >= 0
+        );
+    }
+    
+    // Показываем карточки с задержкой
+    function animateCards() {
+        cards.forEach((card, index) => {
+            if (isPartiallyInViewport(card) && card.style.opacity !== '1') {
+                // Добавляем небольшую задержку для каждой карточки
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 50); // Задержка увеличивается с каждой карточкой
+            }
+        });
+    }
+    
+    // Инициализация стилей для анимации
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.4s ease';
+    });
+    
+    // Проверка видимости при загрузке и скролле
+    window.addEventListener('scroll', animateCards);
+    
+    // Проверка при загрузке и после короткой задержки
+    animateCards();
+    
+    // Дополнительная проверка через 300мс и 600мс для надежности
+    setTimeout(animateCards, 300);
+    setTimeout(animateCards, 600);
+    
+    // Резервный вариант: если карточки все еще не видны через 1.5 секунды, показываем все
+    setTimeout(() => {
+        cards.forEach(card => {
+            if (card.style.opacity !== '1') {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }
+        });
+    }, 1500);
+});
+</script>
+</body>
+</html>
